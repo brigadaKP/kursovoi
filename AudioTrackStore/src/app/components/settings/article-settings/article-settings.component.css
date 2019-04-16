@@ -1,0 +1,151 @@
+article{
+  padding: 1em;
+  color: #d7ecf4; /* #e9dddf; */
+
+  position: relative;
+
+  height: 100%;
+}
+.DefaultBackground{
+    padding: 1em;
+    color: #d7ecf4; /* #e9dddf; */
+
+    background: black;
+    position: relative;
+
+    height: 100%;
+  }
+
+  .Background2{
+    padding: 1em;
+    color: #d7ecf4; /* #e9dddf; */
+
+    background: url(../../../../assets/images/head_image_v5.jpg);
+    position: relative;
+
+    height: 100%;
+  }
+
+  .Background3{
+    padding: 1em;
+    color: #d7ecf4; /* #e9dddf; */
+
+    background: url(../../../../assets/images/head_image_v7.jpg);
+    position: relative;
+
+    height: 100%;
+  }
+
+  .Background4{
+    padding: 1em;
+    color: #d7ecf4; /* #e9dddf; */
+
+    background: url(../../../../assets/images/head_image_v4.jpg);
+    position: relative;
+
+    height: 100%;
+  }
+
+
+  /* header */
+
+  header{
+      font-size: 130%;
+      
+      border: 1px sil #d7ecf4;
+  }
+
+ #tile{
+    background: #252525;
+    padding: 0.5em;
+  }
+
+
+.tableInfo {
+    position: relative;
+    padding: 1em;
+    width: 100%;
+}
+
+input {
+width: 90%;
+background: #414040;
+border: 1px solid #414040;
+padding: 1em;
+} 
+input:focus {border: 1px solid #c91c30;}
+
+/* buttonSearch */
+button { 
+  display: inline-block;
+  padding: .9em;
+  text-align: center;
+  background-color: #d2374a;
+  border: none;
+  border-radius: 2px;
+}
+
+button:hover {background-color: #c91c30}
+
+button:active {
+  background-color: #c91c30;
+  transform: translatey(2px);
+}
+
+
+/* resets */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.clearfix:after {
+	content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* grid */
+.row {
+  margin: 0 -10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.row:last-child {
+  margin-bottom: 0;
+}
+[class*="col-"] {
+  padding: 10px;
+}
+
+@media all and ( min-width: 1200px ) {
+  .col-1-2 {
+    float: left;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 1em;
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden;
+	  text-overflow: ellipsis; 
+  }
+}
+
+
+img{
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+label > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+  }
+  label > input + img{ /* IMAGE STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+  }
+  label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+    border: 2px solid #c91c30;
+  }   
+

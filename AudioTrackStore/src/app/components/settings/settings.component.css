@@ -1,0 +1,36 @@
+#main {
+
+    padding-top: 5%;
+    
+      display: flex;
+      flex: 1;
+    }
+    #main > app-article-settings {
+      flex: 1;
+    }
+    #main > app-nav-m, 
+    #main > app-aside-m {
+      flex: 0 0 15vw;
+      /* background: black; */
+    }
+    #main > app-nav-m {
+      order: -1;
+    }
+
+    .DefaultBackground{
+      background: black;
+      position: relative;
+    }
+  
+    .Background2{
+      background: url(../../../assets/images/head_image_v5.jpg);
+      position: relative;
+    }
+  
+    .Background3{
+      background: url(../../../assets/images/head_image_v7.jpg);
+    }
+  
+    .Background4{
+      background: url(../../../assets/images/head_image_v4.jpg);
+    }

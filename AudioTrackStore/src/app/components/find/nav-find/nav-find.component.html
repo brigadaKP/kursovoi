@@ -1,0 +1,73 @@
+<nav>
+
+  <div id="tile">
+    <form>
+      <table>
+        <table style="margin-bottom: 2em;">
+          <tr>
+            <td>
+              ФИЛЬТР
+            </td>
+            <td>
+              <input type="reset" value="Очистить" class="resetButton" />
+            </td>
+          </tr>
+        </table>
+        <tr>
+          <td>
+            <label>Жанры</label><br>
+
+            <small>
+              <p>
+                <input class="radio" name="Genres" type="radio" value="All" id="All" required checked>
+                <label for="All"> Весь список</label>
+              </p>
+              <div *ngFor="let genre of genres; let i = index">
+                <p *ngIf="i < 4">
+                  <input class="radio" name="Genres" type="radio" value="{{genre.value}}" id="{{genre.value}}" required>
+                  <label for="{{genre.value}}"> {{genre.value}}</label>
+                </p>
+              </div>
+
+              <input type="checkbox" id="hd-1" class="hide" />
+              <label for="hd-1" class="more">Ещё</label>
+              <div>
+                <div *ngFor="let genre of genres; let i = index">
+                  <p *ngIf="i >= 4">
+                    <input class="radio" name="Genres" type="radio" value="{{genre.value}}" id="{{genre.value}}"
+                      required>
+                    <label for="{{genre.value}}"> {{genre.value}}</label>
+                  </p>
+                </div>
+              </div>
+
+            </small>
+          </td>
+        </tr>
+        <br>
+        <tr>
+          <td>
+            <label>Сортировать</label><br>
+
+            <small>
+              <p>
+                <input class="radio" name="Sort" type="radio" value="increase" id="increase" required checked />
+                <label for="increase"> По возрастанию цен</label>
+              </p>
+              <p>
+                <input class="radio" name="Sort" type="radio" value="decrease" id="decrease" required />
+                <label for="decrease"> По убыванию цен</label>
+              </p>
+            </small>
+          </td>
+        </tr>
+      </table>
+
+      <p>
+        <input type="submit" value="Подобрать" class="submitButton" />
+      </p>
+
+    </form>
+  </div>
+
+</nav>

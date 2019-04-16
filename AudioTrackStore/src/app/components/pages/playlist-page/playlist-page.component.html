@@ -1,0 +1,75 @@
+<app-header-m></app-header-m>
+
+<div id="main">
+
+    <article>
+        <div class="article">
+            <table class="tableHeader">
+                <tr>
+                    <th class="cover">
+                        <img alt="Аватарка" src="../../../../assets/images/Help!.jpg" width="200px" height="200px" />
+                    </th>
+                    <td valign="top"  style= "padding-left: 1em;">
+                        <header>Альбом</header><br>
+                        <header>{{playlist.name}}</header>
+                        <br />
+                        <small>
+                            Исполнитель: The Beatles <br/>
+                            {{playlist.year}} <br/>
+                            Количество треков: {{playlist.number_of_tracks}} <br/>
+                            Обшае время: {{playlist.time}} <br/>
+                            Рок <br/>
+                            Стоимость: {{playlist.price}} $ <br/>
+                        </small>
+                    </td>
+                </tr>
+            </table>
+
+            <p class="stringTrack">
+                    Треки:
+                  </p>
+                  <div>
+                    <table class="tracksList" >
+                      <tr *ngFor="let track of tracks">
+                        <td class="tracksListTd">
+                            <audio src="{{track.link}}" controls></audio>
+                        </td>
+                        <td class="trackName tracksListTd">
+                          {{track.name}},  
+                          <a href="">{{track.name_album}}</a>, 
+                          <a href="">{{track.name_authors}}</a>, 
+                          {{track.name_genres}}
+                        </td>
+                        <!-- <td>
+                          <div class="starability-basic">
+                            <input type="radio" id="{{track.id}}5" name="{{track.name}}" value="5" />
+                            <label for="{{track.id}}5" title="Amazing">5 stars</label>
+                            <input type="radio" id="{{track.id}}4" name="{{track.name}}" value="4" />
+                            <label for="{{track.id}}4" title="Very good">4 stars</label>
+                            <input type="radio" id="{{track.id}}3" name="{{track.name}}" value="3" />
+                            <label for="{{track.id}}3" title="Average">3 stars</label>
+                            <input type="radio" id="{{track.id}}2" name="{{track.name}}" value="2" />
+                            <label for="{{track.id}}2" title="Not good">2 stars</label>
+                            <input type="radio" id="{{track.id}}1" name="{{track.name}}" value="1" />
+                            <label for="{{track.id}}1" title="Terrible">1 star</label>
+                          </div>
+                        </td> -->
+                        <td class="bubuttonPayTd tracksListTd">
+                            <button class="buttonPay"><img alt="Купить"
+                              src="../../../../assets/images/basket.png" height="20px" width="20px"/> + ${{track.price}}</button>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                
+                  <br/><br/>
+                  <button class="buttonPay">Купить альбом <img alt="Купить"
+                    src="../../../../assets/images/basket.png" height="20px" width="20px"/> + ${{playlist.price}}</button>
+        </div>
+
+    </article>
+    <app-nav-m></app-nav-m>
+    <app-aside-m></app-aside-m>
+</div>
+
+<app-footer-m></app-footer-m>

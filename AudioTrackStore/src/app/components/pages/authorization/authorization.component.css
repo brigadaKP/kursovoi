@@ -1,0 +1,96 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#container {
+  display: flex;
+  flex: 1;
+  background-image: url(../../../../assets/images/head_image_v6.jpg);
+  min-height: 100vh;
+  margin: 0;
+}
+
+#container > nav, 
+#container > aside {
+  flex: 0 0 50vw;
+}
+
+#container > nav {
+  order: -1;
+}
+
+nav, aside{
+  padding: 1em;
+}
+
+nav {
+	background-color: rgba(0, 0, 0, 0.9);
+	padding-top: 5vh;
+}
+
+
+.img {
+	position: relative;
+	margin-top: 1%;
+	text-align: center;
+}
+
+.form {
+ 	margin: 0 auto;
+  	width: 43vh;
+	font-size: 120%;
+}
+
+.head {
+	margin-top: 8%;
+}
+
+input {
+    width: 90%;
+    background: #414040;
+    border: 1px solid #414040;
+    padding: 1em;
+	margin-top: 10px;
+	width: 43vh;
+	font-size: 90%;
+}
+
+input:hover, input:focus {
+	outline: none;
+} 
+
+.message {
+    color: #5d9700;
+    font-size: 70%;
+}
+
+a {
+	color: #6E6A6A;
+	text-decoration: none;
+}
+
+a:hover {
+    color: #d7ecf4; /* #e9dddf; */
+	text-decoration: none;
+}
+
+button {
+	margin-top: 15px;
+    background-color: #d2374a;
+    padding: .9em;
+  outline: none; /* убирать контур в Mozilla */
+  width: 43vh;
+  border-radius: 2px;
+	border: none;
+	font-size: 90%;
+	
+} 
+button:hover { 
+	background-color: #c91c30;
+} /* при наведении курсора мышки */
+button:active {
+    background-color: #c91c30;
+    transform: translatey(2px);
+  }
+
+

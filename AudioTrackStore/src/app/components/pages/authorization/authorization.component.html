@@ -1,0 +1,22 @@
+<div id="container">
+	<nav>
+	<div class="img"><img src="../../../../assets/images/icon_v2.png" alt="icon" height="100px" width="100px" align="center"><br/></div>
+	<div class="head">
+		<h1 align="center" style="font-size: 180%">Авторизация</h1>
+		<h4 align="center">Войти с помощью электронной почты или имени пользователя</h4><br/>
+	</div>
+	<div class="form">
+		<form (submit)="logIn(Login.value, Password.value)">
+			<label for="login">Ваш логин:</label><br/>
+			<input type="text"  name="login" id="login" placeholder="Введите логин" required #Login/><br/><br/>
+    	 	<label for="password">Ваш пароль:</label><br/>
+     	 	<input type="password"  name="password" id="password" placeholder="Введите пароль" required #Password/><br/><br/>
+      		<button type="submit"><b>Войти</b></button><br/>
+          <p class="message">Вы ещё не зарегистрированы?<br/>
+            <a routerLink="/registration">Создать аккаунт</a>
+          </p>
+		</form>
+	</div>
+	</nav>
+	<aside></aside>
+</div>
