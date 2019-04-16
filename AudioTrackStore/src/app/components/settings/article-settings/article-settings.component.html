@@ -1,0 +1,81 @@
+<article class="{{background}}">
+  <header>НАСТРОЙКИ</header>
+  <br>
+  <p>Моя информация</p>
+  <div id="tile">
+    <form (submit)="saveChange(login.value, Password.value, Email.value, PasswordConfirm.value)">
+      <table class="tableInfo">
+        <tr>
+          <td>
+            <label for="userName">Логин</label><br><br />
+            <input type="text" id="userName" placeholder="{{userName}}" required #login/><br /><br />
+          </td>
+          <td>
+            <label for="password">Пароль</label><br><br />
+            <input type="password" id="password" placeholder="{{password}}" required #Password/><br /><br />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="E-mail">E-mail</label><br><br />
+            <input type="email" id="E-mail" placeholder="{{email}}" required #Email/><br /><br />
+          </td>
+          <td>
+            <label for="passwordConfirm">Подтвердите пароль</label><br><br />
+            <input type="password" id="passwordConfirm" placeholder="{{password}}" required #PasswordConfirm/><br /><br />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="submit">
+              Сохранить изменения
+            </button><br />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <p>Темы</p>
+  <div id="tile">
+    <form>
+      <div class="row clearfix">
+
+        <div style="padding: 0.5em" class="col-1-2">
+          <label for="DefaultBackground">
+            <input class="radio" name="Background" type="radio" value="DefaultBackground" id="DefaultBackground"
+              required checked [(ngModel)]="background"/>
+            <img alt="Тема 1" src="../../../../assets/images/black.jpg" width="250px" height="150px" />
+          </label>
+        </div>
+
+        <div style="padding: 0.5em" class="col-1-2">
+          <label for="Background2">
+            <input class="radio" name="Background" type="radio" value="Background2" id="Background2" required  [(ngModel)]="background"/>
+
+            <img alt="Тема 2" src="../../../../assets/images/head_image_v5.jpg" width="250px" height="150px" />
+          </label>
+        </div>
+
+        <div style="padding: 0.5em" class="col-1-2">
+          <label for="Background3">
+            <input class="radio" name="Background" type="radio" value="Background3" id="Background3" required  [(ngModel)]="background"/>
+            <img alt="Тема 3" src="../../../../assets/images/head_image_v7.jpg" width="250px" height="150px" />
+          </label>
+        </div>
+
+        <div style="padding: 0.5em" class="col-1-2">
+          <label for="Background4">
+            <input class="radio" name="Background" type="radio" value="Background4" id="Background4" required [(ngModel)]="background"/>
+            <img alt="Тема 4" src="../../../../assets/images/head_image_v4.jpg" width="250px" height="150px" />
+          </label>
+        </div>
+
+      </div>
+      <button type="submit" style="margin-left: 1.5em">
+        Сохранить изменения
+      </button><br /><br />
+    </form>
+  </div>
+
+</article>

@@ -1,0 +1,19 @@
+aside {
+    padding: 1em;
+    color: #d7ecf4; /* #e9dddf; */
+  }
+
+  /* tableOtherPerformers */
+
+.tableOtherPerformers{
+  width: 100%;
+  /*border: 1px solid wheat;*/  
+  align-content: center;
+  padding: 0.1em;
+  
+}
+
+#tile{
+  background: #252525;
+  padding: 0.5em;
+}

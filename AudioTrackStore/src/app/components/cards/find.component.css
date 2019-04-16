@@ -1,0 +1,18 @@
+#main {
+
+  padding-top: 5%;
+  
+    display: flex;
+    flex: 1;
+  }
+  #main > app-article-find {
+    flex: 1;
+  }
+  #main > app-nav-find, 
+  #main > app-aside-m {
+    flex: 0 0 15vw;
+    background: black;
+  }
+  #main > app-nav-find {
+    order: -1;
+  }

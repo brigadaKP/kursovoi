@@ -1,0 +1,89 @@
+#main {
+
+    padding-top: 5%;
+    
+      display: flex;
+      flex: 1;
+    }
+    #main > article {
+      flex: 1;
+    }
+    #main > app-nav-m, 
+    #main > app-aside-m {
+      flex: 0 0 15vw;
+      background: black;
+    }
+    #main > app-nav-m {
+      order: -1;
+    }
+
+header{
+    font-size: 130%;
+}
+
+.tableHeader{
+    width: 100%;
+    border-collapse: collapse; 
+    line-height: 1.1;
+}
+  
+.cover{
+    /*border: 1px solid wheat;*/
+    width: 20%;
+}
+
+.article{
+
+    width: 100%;
+    padding: 1em;
+  
+}
+
+
+/* tracksList */
+  
+.tracksList{
+    /* border: 1px solid wheat;    */
+    border-collapse: collapse;
+    font-size: 80%;
+    /* width: 100%; */
+  }
+  
+  .tracksListTd {
+    border-bottom: 3px solid #383838;
+    padding-top: 1em;
+    padding-bottom: 1em; 
+  }
+
+  .trackName{
+    min-width: 65%;
+  }
+
+  .bubuttonPayTd{
+    width: 11%;
+  }
+
+  /* buttonPay */
+
+.buttonPay{
+    padding: .5em 1em; 
+    text-align: center;
+    background-color: #d2374a;
+    border: none;
+    border-radius: 5px;
+    font-size: 120%;
+}
+
+
+.buttonPay:hover {background-color: #c91c30}
+  
+  .buttonPay:active {
+    background-color: #c91c30;
+    transform: translateX(2px);
+  }
+
+   /* stringTrack */
+
+  .stringTrack{
+    font-size: 120%;
+  }

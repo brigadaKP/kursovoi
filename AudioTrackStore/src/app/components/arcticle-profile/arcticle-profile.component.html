@@ -1,0 +1,75 @@
+<article>
+
+<table class="tableUserName">
+  <tr>
+    <th class="avatarIcon">
+      <img alt="Аватарка" src="../../../assets/images/user.png" width="100px" height="100px" />
+    </th>
+    <th class="userNameAndStatistics">
+      <h2><strong>{{userName}}</strong></h2>
+      <small>
+        <ul>
+          <li style="padding: 2px;" *ngFor="let stat of statistics">
+            {{stat.indicator}}
+          </li>
+        </ul>
+      </small>
+    </th>
+  </tr>
+</table>
+
+
+<br />
+
+<p class="stringTrack">
+  Треки:
+</p>
+<div class="tracksList">
+  <table>
+    <tr *ngFor="let track of tracks">
+      <td>
+          <audio src="{{track.link}}" controls></audio>
+      </td>
+      <td class="trackName">
+        {{track.name}},  
+        <a href="">{{track.name_album}}</a>, 
+        <a href="">{{track.name_authors}}</a>, 
+        {{track.name_genres}}
+      </td>
+      <!--<td>
+         <fieldset class="starability-basic">
+          <input type="radio" id="{{track.id}}5" name="{{track.name}}" value="5" />
+          <label for="{{track.id}}5" title="Amazing">5 stars</label>
+          <input type="radio" id="{{track.id}}4" name="{{track.name}}" value="4" />
+          <label for="{{track.id}}4" title="Very good">4 stars</label>
+          <input type="radio" id="{{track.id}}3" name="{{track.name}}" value="3" />
+          <label for="{{track.id}}3" title="Average">3 stars</label>
+          <input type="radio" id="{{track.id}}2" name="{{track.name}}" value="2" />
+          <label for="{{track.id}}2" title="Not good">2 stars</label>
+          <input type="radio" id="{{track.id}}1" name="{{track.name}}" value="1" />
+          <label for="{{track.id}}1" title="Terrible">1 star</label>
+        </fieldset> 
+      </td>-->
+    </tr>
+  </table>
+</div>
+
+<br />
+
+<p class="stringTrack">
+  Плейлисты и альбомы:
+</p>
+
+<div class="row clearfix">
+ 
+  <div *ngFor="let playlist of playlists" style="padding: 0.5em" class="col-1-4"> 
+    <a routerLink="/{{playlist.link}}">
+      <img alt="Обложка" src="../../../assets/images/{{playlist.name}}.jpg" width="150px" height="150px"/>
+      <br>
+      <small>{{playlist.name}}</small>
+    </a>
+  </div>
+
+</div>
+
+</article>

@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  color: #d7ecf4;
+  font-family: Arial Black;
+}
+
+body {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  margin: 0;
+ }
+
+  
+  /* @import url('./player/player.css') all;
+  @import url('./player/jquery-ui.css') all; */
