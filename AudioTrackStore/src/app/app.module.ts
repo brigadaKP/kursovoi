@@ -25,6 +25,9 @@ import { PlaylistPageComponent } from './components/pages/playlist-page/playlist
 import { AuthorizationComponent } from './components/pages/authorization/authorization.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { RegistrationComponent } from './components/pages/registration/registration.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { MenuComponent } from './components/adminHome/menu/menu.component';
+import { CreatPlaylistComponent } from './components/creat-playlist/creat-playlist.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { RegistrationComponent } from './components/pages/registration/registrat
     PlaylistPageComponent,
     AuthorizationComponent,
     ToolbarComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AdminHomeComponent,
+    MenuComponent,
+    CreatPlaylistComponent
   ],
   imports: [
     BrowserModule,

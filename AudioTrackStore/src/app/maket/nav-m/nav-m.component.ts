@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavMComponent implements OnInit {
 
+  typeUser:string;
+
   constructor() { }
 
   ngOnInit() {
-  }
 
+    this.typeUser="admin";
+    // typeUser="user";
+
+  }
 }
