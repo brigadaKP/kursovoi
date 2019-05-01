@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatPlaylistPageComponent implements OnInit {
 
-  playlist:Playlist;
-  tracks:Track[];
-  checkboxs:boolean[];
+  playlist: Playlist;
+  tracks: Track[];
+  checkboxs: boolean[];
 
-  tracksIdInPlaylist:string[];
+  tracksIdInPlaylist: string[];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
 
@@ -52,58 +52,58 @@ export class CreatPlaylistPageComponent implements OnInit {
         price: '4'
       }
     ];
- 
-    this.playlist  = {
+
+    this.playlist = {
       id_album: null,
       name: "Новый плейлист",
-      yera: Number(Date().substring(11,15)),
+      yera: Number(Date().substring(11, 15)),
       number_of_tracks: 0,
       link: null,
       price: "0",
       time: 0
-  };
-  
+    };
+
     this.checkboxs = new Array(this.tracks.length);
 
     for (let i = 0; i < this.tracks.length; i++) {
-       this.checkboxs[i] = false;
+      this.checkboxs[i] = false;
     };
-  
+
   }
 
-  createPlaylist(cover){
-  
-    for (let i = 0; i < this.checkboxs.length; i++) {
-    console.log(this.checkboxs[i]);    
-   }
-   console.log(this.playlist.name); 
-   
-   let count = 0;
-   this.playlist.price = "0";
+  createPlaylist(cover) {
 
-   for (let i = 0; i < this.tracks.length; i++) {
-    if(this.checkboxs[i]) {
-      count++;
-      this.playlist.price = String(Number(this.playlist.price) + Number(this.tracks[i].price)); 
-    }  
-   }
-   
-   if(count != 0){
-   this.tracksIdInPlaylist = new Array(count);
-   console.log("count " + count); 
-   for (let i = 0; i < this.tracks.length; i++) {
-    if(this.checkboxs[i]) {
-      this.tracksIdInPlaylist[i] = this.tracks[i].id;
-    }  
-   }
-   
-   this.playlist.number_of_tracks = count;
-   alert("Плейлист создан");  
-   return false;
-   } else {
-    alert("Плейлист пуст");  
-    return false;
-   }
+    for (let i = 0; i < this.checkboxs.length; i++) {
+      console.log(this.checkboxs[i]);
+    }
+    console.log(this.playlist.name);
+
+    let count = 0;
+    this.playlist.price = "0";
+
+    for (let i = 0; i < this.tracks.length; i++) {
+      if (this.checkboxs[i]) {
+        count++;
+        this.playlist.price = String(Number(this.playlist.price) + Number(this.tracks[i].price));
+      }
+    }
+
+    if (count != 0) {
+      this.tracksIdInPlaylist = new Array(count);
+      console.log("count " + count);
+      for (let i = 0; i < this.tracks.length; i++) {
+        if (this.checkboxs[i]) {
+          this.tracksIdInPlaylist[i] = this.tracks[i].id;
+        }
+      }
+
+      this.playlist.number_of_tracks = count;
+      alert("Плейлист создан");
+      return false;
+    } else {
+      alert("Плейлист пуст");
+      return false;
+    }
   }
 
 }
