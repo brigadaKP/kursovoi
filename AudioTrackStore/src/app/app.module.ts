@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +28,8 @@ import { RegistrationComponent } from './components/pages/registration/registrat
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { MenuComponent } from './components/adminHome/menu/menu.component';
 import { CreatPlaylistComponent } from './components/creat-playlist/creat-playlist.component';
+import { CreatPlaylistPageComponent } from './components/pages/creat-playlist-page/creat-playlist-page.component';
+import { ArticleCreatPlaylistPageComponent } from './components/pages/creat-playlist-page/article-creat-playlist-page/article-creat-playlist-page.component';
 
 @NgModule({
   declarations: [
@@ -54,12 +56,15 @@ import { CreatPlaylistComponent } from './components/creat-playlist/creat-playli
     RegistrationComponent,
     AdminHomeComponent,
     MenuComponent,
-    CreatPlaylistComponent
+    CreatPlaylistComponent,
+    CreatPlaylistPageComponent,
+    ArticleCreatPlaylistPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

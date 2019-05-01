@@ -1,17 +1,5 @@
 <div style="padding: 1em 0em;">
-    <button type="button" value="crearPlaylist">Создать плейлист</button>
-
-    <!-- <button type="button" value="crearPlaylist">
-        <table>
-            <tr>
-                <th class="img">
-                    <img src="../../../assets/images/add.png" alt="" height="40px" width="40px" align="center"/>
-                </th>
-                <th class="text">
-                        Создать плейлист
-                </th>
-            </tr>
-        </table>
-        </button> -->
-
+    <button type="button" value="crearPlaylist" (click)="openCreatPlaylistPage($event)" routerLink="/create-playlist">
+        Создать плейлист
+    </button>
 </div>

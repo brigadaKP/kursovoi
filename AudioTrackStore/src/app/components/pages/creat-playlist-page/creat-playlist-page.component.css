@@ -1,0 +1,141 @@
+#main {
+
+    padding-top: 5%;
+    
+      display: flex;
+      flex: 1;
+    }
+    #main > article { flex: 1; }
+    #main > app-nav-m, 
+    #main > app-aside-m {
+      flex: 0 0 15vw;
+      background: black;
+    }
+    #main > app-nav-m { order: -1; }
+
+article {
+    padding: 1em;
+    color: #d7ecf4; /* #e9dddf; */
+      
+    position: relative;
+      
+    height: 100%;
+}
+
+input {
+  width: 90%;
+  background: none;
+  border: none;
+  padding: 1em;
+  font-size: 130%;
+  } 
+  input:focus {border: 1px solid #c91c30;}
+  
+  /* buttonSearch */
+  button { 
+    display: inline-block;
+    padding: .9em;
+    text-align: center;
+    background-color: #d2374a;
+    border: none;
+    border-radius: 2px;
+  }
+  
+  button:hover {background-color: #c91c30}
+  
+  button:active {
+    background-color: #c91c30;
+    transform: translatey(2px);
+  }
+
+  .stringTrack{ font-size: 120%; }
+
+  .table{
+    /* border: 1px solid wheat;    */
+    border-collapse: collapse;
+    font-size: 80%;
+    /* width: 100%; */
+  }
+  
+  .td {
+    border-bottom: 3px solid #383838;
+    padding-top: 1em;
+    padding-bottom: 1em; 
+  }
+  
+  .trackName{
+    min-width: 65%;
+  }
+
+  /* checkbox */
+
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  margin: 10px 0 0 7px;
+}
+.checkbox + label {
+  position: relative;
+  padding: 0 0 0 35px;
+  cursor: pointer;
+}
+.checkbox + label:before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #d7ecf4;
+  border-radius: 50%;
+  background: none;
+}
+.checkbox + label:after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #d2374a;
+  border: none;
+  opacity: 0;
+  transition: .3s;
+}
+.checkbox:checked + label:after { opacity: 1; }
+
+.checkbox:checked + label::before {
+  border: 1px solid #d2374a; 
+  opacity: 1;
+}
+
+/* cover */
+
+.cover{
+  background: #252525;
+  padding: 0.5em;
+}
+.example-1 .form-group{ padding:0.1em; }
+.example-1 input[type=file]{
+  outline: 0;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none
+}
+.example-1 .label{
+  width: 200px;
+  height: 200px;
+  border: 2px dashed grey;
+  border-radius: 5px;
+  display: block;
+  padding: 1.2em;
+  transition: border 300ms ease;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 40%;
+}
+.example-1 .label .title{color:grey;transition:200ms color}
+.example-1 .label:hover{border:2px solid #c91c30}
+.example-1 .label:hover .title{color:#c91c30}

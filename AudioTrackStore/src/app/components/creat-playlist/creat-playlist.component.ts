@@ -12,4 +12,9 @@ export class CreatPlaylistComponent implements OnInit {
   ngOnInit() {
   }
 
+  openCreatPlaylistPage(event){
+    console.log(event);
+    // document.location.href = "/create-playlist";
+  }
+
 }
