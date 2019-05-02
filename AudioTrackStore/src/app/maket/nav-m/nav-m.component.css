@@ -3,3 +3,7 @@ nav {
     color: #d7ecf4; /* #e9dddf; */
   }
   
+  #tile{
+    background: #252525;
+    padding: 0.5em;
+  }

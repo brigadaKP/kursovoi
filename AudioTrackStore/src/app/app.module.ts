@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,12 @@ import { PlaylistPageComponent } from './components/pages/playlist-page/playlist
 import { AuthorizationComponent } from './components/pages/authorization/authorization.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { RegistrationComponent } from './components/pages/registration/registration.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { MenuComponent } from './components/adminHome/menu/menu.component';
+import { CreatPlaylistComponent } from './components/creat-playlist/creat-playlist.component';
+import { CreatPlaylistPageComponent } from './components/pages/creat-playlist-page/creat-playlist-page.component';
+import { PageForMenuItemsComponent } from './components/pages/page-for-menu-items/page-for-menu-items.component';
+import { UsersListComponent } from './components/pages/users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -48,12 +54,19 @@ import { RegistrationComponent } from './components/pages/registration/registrat
     PlaylistPageComponent,
     AuthorizationComponent,
     ToolbarComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AdminHomeComponent,
+    MenuComponent,
+    CreatPlaylistComponent,
+    CreatPlaylistPageComponent,
+    PageForMenuItemsComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

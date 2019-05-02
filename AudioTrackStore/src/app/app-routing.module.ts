@@ -9,6 +9,8 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { PlaylistPageComponent } from './components/pages/playlist-page/playlist-page.component';
 import { AuthorizationComponent } from './components/pages/authorization/authorization.component';
 import { RegistrationComponent } from './components/pages/registration/registration.component';
+import { CreatPlaylistPageComponent } from './components/pages/creat-playlist-page/creat-playlist-page.component';
+import { UsersListComponent } from './components/pages/users-list/users-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -17,8 +19,9 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent},
   { path: 'playlist-page', component: PlaylistPageComponent},
   { path: 'login', component: AuthorizationComponent},
-  { path: 'registration', component: RegistrationComponent}
-
+  { path: 'registration', component: RegistrationComponent},
+  { path: 'create-playlist', component: CreatPlaylistPageComponent},
+  { path: 'users-list', component: UsersListComponent }
 ];
 
 @NgModule({

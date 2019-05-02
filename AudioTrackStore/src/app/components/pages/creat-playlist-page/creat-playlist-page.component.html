@@ -1,0 +1,75 @@
+<app-header-m></app-header-m>
+
+<div id="main">
+  <article>
+    <form>
+      <table class="tableHeader">
+        <tr>
+          <th class="cover">
+            <div class="example-1">
+              <div class="form-group">
+                <label class="label">
+                  <span class="title">Добавить абложку</span>
+                  <input type="file" accept="image/jpeg,image/png,image/jpg" #cover>
+                </label>
+              </div>
+            </div>
+          </th>
+          <td valign="top" style="padding-left: 1em;">
+            ПЛЕЙЛИСТ
+            <p>
+              <input type="text" id="namePlaylist" placeholder="{{playlist.name}}" [(ngModel)]="playlist.name"
+                name="playlist.name" required />
+            </p>
+            <small>
+              <p>
+                Количество треков: {{playlist.number_of_tracks}}
+              </p>
+              <p>
+                Стоимость: {{playlist.price}}
+              </p>
+            </small>
+          </td>
+        </tr>
+      </table>
+
+      <p class="stringTrack">
+        Треки:
+      </p>
+      <div class="tracksList">
+        <table>
+          <tr *ngFor="let track of tracks; let i = index">
+            <td class="td">
+              <input class="checkbox" name="{{track.name}}" type="checkbox" id="{{track.id}}" [(ngModel)]="checkboxs[i]"
+                required />
+              <label for="{{track.id}}"></label>
+            </td>
+            <td class="td">
+              <audio src="{{track.link}}" controls></audio>
+            </td>
+            <td class="trackName td">
+              {{track.name}},
+              <a href="">{{track.name_album}}</a>,
+              <a href="">{{track.name_authors}}</a>,
+              {{track.name_genres}}
+            </td>
+            <td class="td">
+              {{track.price}} $
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <br />
+      <button type="button" (click)="createPlaylist(cover.value)">
+        Сохранить
+      </button><br />
+    </form>
+
+  </article>
+
+  <app-nav-m></app-nav-m>
+  <app-aside-m></app-aside-m>
+</div>
+
+<app-footer-m></app-footer-m>

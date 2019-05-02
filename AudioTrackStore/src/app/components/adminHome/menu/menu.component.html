@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <td>
+      <button type="button" (click)="users()" style="font-size: 125%;" routerLink="/users-list">Пользователи</button>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <!-- <button type="button" value="Music">Музыка</button> -->
+      <input type="checkbox" id="hd-2" class="hide" />
+      <label for="hd-2" class="more">Музыка</label>
+      <div>
+        <div>
+          <p>
+            <button type="button" (click)="music('addTrack')">Добавить трек</button>
+            <button type="button" (click)="music('addAlbum')">Добавить альбом</button>
+            <button type="button" (click)="music('addMusician')">Добавить исполнителя</button>
+            <button type="button" (click)="music('deleteMusic')">Удалить</button>
+            <button type="button" (click)="music('infoMusic')">Информация</button>
+          </p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
