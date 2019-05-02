@@ -29,6 +29,8 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { MenuComponent } from './components/adminHome/menu/menu.component';
 import { CreatPlaylistComponent } from './components/creat-playlist/creat-playlist.component';
 import { CreatPlaylistPageComponent } from './components/pages/creat-playlist-page/creat-playlist-page.component';
+import { PageForMenuItemsComponent } from './components/pages/page-for-menu-items/page-for-menu-items.component';
+import { UsersListComponent } from './components/pages/users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { CreatPlaylistPageComponent } from './components/pages/creat-playlist-pa
     AdminHomeComponent,
     MenuComponent,
     CreatPlaylistComponent,
-    CreatPlaylistPageComponent
+    CreatPlaylistPageComponent,
+    PageForMenuItemsComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
