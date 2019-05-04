@@ -1,4 +1,23 @@
-<p>
-  page-for-menu-items works!
-  {{item}}
-</p>
+<div [ngSwitch]="item">
+  <div *ngSwitchCase="'users'">
+    <app-users-item></app-users-item>
+  </div>
+  <div *ngSwitchCase="'addTrack'">
+    <app-add-track-item></app-add-track-item>
+  </div>
+  <div *ngSwitchCase="'addAlbum'">
+    <app-add-album-item></app-add-album-item>
+  </div>
+  <div *ngSwitchCase="'addMusician'">
+    <app-add-musician-item></app-add-musician-item>
+  </div>
+  <div *ngSwitchCase="'deleteMusic'">
+    deleteMusic
+  </div>
+  <div *ngSwitchCase="'infoMusic'">
+    infoMusic
+  </div>
+  <div *ngSwitchDefault>
+    addMusician
+  </div>
+</div>

@@ -73,6 +73,8 @@ export class CreatPlaylistPageComponent implements OnInit {
 
   createPlaylist(cover) {
 
+    console.log(cover);
+
     for (let i = 0; i < this.checkboxs.length; i++) {
       console.log(this.checkboxs[i]);
     }
