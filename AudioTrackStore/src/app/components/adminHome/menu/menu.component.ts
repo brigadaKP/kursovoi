@@ -16,16 +16,24 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  music(value){
-    this.menuItem.setMenuItem(value);
-    console.log(this.menuItem.getMenuItem());
-
+  music(value:string){
+    this._router.navigate(['./users-list'],
+    {
+      queryParams:{
+        value
+      }
+    });
   }
 
   users(){
     this.menuItem.setMenuItem("users");
     console.log(this.menuItem.getMenuItem());
-    this._router.navigate(['users-list']);
+    this._router.navigate(['./users-list'],
+    {
+      queryParams:{
+        value:"users"
+      }
+    });
   }
 
 }

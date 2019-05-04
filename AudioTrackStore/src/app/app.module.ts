@@ -31,6 +31,10 @@ import { CreatPlaylistComponent } from './components/creat-playlist/creat-playli
 import { CreatPlaylistPageComponent } from './components/pages/creat-playlist-page/creat-playlist-page.component';
 import { PageForMenuItemsComponent } from './components/pages/page-for-menu-items/page-for-menu-items.component';
 import { UsersListComponent } from './components/pages/users-list/users-list.component';
+import { UsersItemComponent } from './components/pages/page-for-menu-items/users-item/users-item.component';
+import { AddTrackItemComponent } from './components/pages/page-for-menu-items/add-track-item/add-track-item.component';
+import { AddMusicianItemComponent } from './components/pages/page-for-menu-items/add-musician-item/add-musician-item.component';
+import { AddAlbumItemComponent } from './components/pages/page-for-menu-items/add-album-item/add-album-item.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,11 @@ import { UsersListComponent } from './components/pages/users-list/users-list.com
     CreatPlaylistComponent,
     CreatPlaylistPageComponent,
     PageForMenuItemsComponent,
-    UsersListComponent
+    UsersListComponent,
+    UsersItemComponent,
+    AddTrackItemComponent,
+    AddMusicianItemComponent,
+    AddAlbumItemComponent
   ],
   imports: [
     BrowserModule,

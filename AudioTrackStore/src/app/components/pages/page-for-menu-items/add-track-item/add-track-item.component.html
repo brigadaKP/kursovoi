@@ -1,0 +1,73 @@
+<div>
+  <p class="header">
+    ДОБАВИТЬ ТРЕК
+  </p>
+  <div id="tile">
+    <form>
+      <table>
+        <tr>
+          <td>
+            <label for="name">Название трека</label><br><br />
+            <input type="text" id="name" placeholder="Трек" required [(ngModel)]="track.name"
+              name="track.name" /><br /><br />
+          </td>
+
+          <td>
+            <label for="year">Год</label><br><br />
+            <input type="text" id="year" required [(ngModel)]="track.year" name="track.year" /><br /><br />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="name_album">Название альбома</label><br><br />
+            <input type="text" id="name_album" placeholder="Альбом" required [(ngModel)]="track.name_album"
+              name="track.name_album" /><br /><br />
+          </td>
+          <td>
+            <label for="name_authors">Исполнитель</label><br><br />
+            <input type="text" id="name_authors" placeholder="Исполнитель" required [(ngModel)]="track.name_authors"
+              name="track.name_authors" /><br /><br />
+          </td>
+        </tr>
+        <tr>
+
+          <td>
+            <label for="genres">Жанр</label><br><br />
+            <select id="genres" [(ngModel)]="track.name_genre" name="track.name_genre">
+              <option *ngFor="let genre of genres" value="{{genre.name_genre}}">{{genre.name_genre}}</option>
+            </select><br><br />
+          </td>
+          <td>
+            <label for="price">Стоимость</label><br><br />
+            <input type="text" id="price" placeholder="$" required [(ngModel)]="track.price"
+              name="track.price" /><br /><br />
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+
+            <div class="example-2">
+              <div class="form-group">
+                <input type="file" name="file" id="file" class="input-file" accept=".mp3" #file>
+                <label for="file" class="btn btn-tertiary js-labelFile">
+                  <i class="icon fa fa-check"></i>
+                  <span class="js-fileName"> Загрузить файл</span>
+                </label>
+              </div>
+            </div><br />
+          </td>
+
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="button" (click)="addTrack(file.value)">
+              Добавить
+            </button><br />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

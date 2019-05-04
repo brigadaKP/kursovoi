@@ -1,0 +1,67 @@
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<script type="text/javascript" src="//cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script> -->
+
+<p class="header">
+  СПИСОК ПОЛЬЗОВАТЕЛЕЙ
+</p>
+<div id="tile">
+  <table>
+    <thead>
+      <tr>
+        <td>Логин</td>
+        <td>Пароль</td>
+        <td>E-mail</td>
+        <td>Роль</td>
+        <td class="isBlock"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <td>
+          {{user.isAdmin}}
+        </td>
+        <td>
+          {{user.isUser}}
+        </td>
+        <td>
+          asd
+        </td>
+        <td>
+          <input type="checkbox" class="checkbox" id="isAdmin+{{user.id}}" [(ngModel)]="user.isAdmin"
+            name="user.isAdmin" (ngChange)="user.isAdmin" />
+          <label for="isAdmin+{{user.id}}">
+            Admin
+          </label><br />
+          <input type="checkbox" class="checkbox" id="isUser+{{user.id}}" [(ngModel)]="user.isUser" name="user.isUser"
+            (ngChange)="user.isUser" />
+          <label for="isUser+{{user.id}}">
+            User
+          </label><br />
+        </td>
+        <td class="isBlock">
+          <button type="button" *ngIf="user.isBlock; else unset" (click)="isCheckedBlock  ('unblock', i)">
+            Разблокировать
+          </button>
+          <ng-template #unset>
+            <button type="button" (click)="isCheckedBlock('block', i)" #unset>
+              Блокировать
+            </button>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br />
+<p class="click" (click)="checkedAdmin()">
+  Количество администраторов: {{adminCount}}
+</p>
+<p class="click" (click)="checkedUser()">
+  Количество активных пользователей: {{userCount}}
+</p>
+<p>
+  Количество блокированых пользователей: {{blockCount}}
+</p>
+<p>
+  Общее количество пользователей: {{allCount}}
+</p>

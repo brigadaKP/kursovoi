@@ -1,0 +1,61 @@
+<div>
+    <p class="header">
+      ДОБАВИТЬ АЛЬБОМ
+    </p>
+    <div id="tile">
+      <form>
+        <table>
+          <tr>
+                <td>
+                    <label for="name_album">Название альбома</label><br><br />
+                    <input type="text" id="name_album" placeholder="Альбом" required [(ngModel)]="playlist.name"
+                      name="playlist.name" /><br /><br />
+                  </td>
+  
+            <td>
+              <label for="year">Год</label><br><br />
+              <input type="text" id="year" required [(ngModel)]="playlist.year" name="playlist.year" /><br /><br />
+            </td>
+          </tr>
+  
+          <tr>
+            
+            <td>
+              <label for="name_authors">Исполнитель</label><br><br />
+              <input type="text" id="name_authors" placeholder="Исполнитель" required [(ngModel)]="playlist.name_authors"
+                name="playlist.name_authors" /><br /><br />
+            </td>
+            <td>
+                <label for="genres">Жанр</label><br><br />
+                <select id="genres" [(ngModel)]="playlist.name_genre" name="playlist.name_genre">
+                  <option *ngFor="let genre of genres" value="{{genre.name_genre}}">{{genre.name_genre}}</option>
+                </select><br><br />
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <label>Загрузить файлы</label><br><br />
+                  <input id="filesToUpload" type="file" multiple="multiple" name="filesToUpload[]" 
+                          accept=".mp3" required="required" title="Необходимо выбрать минимум один файл" />
+              </td>
+            <td>
+              <label for="price">Стоимость</label><br><br />
+              <input type="text" id="price" placeholder="$" required [(ngModel)]="playlist.price"
+                name="playlist.price" /><br /><br />
+            </td>
+          </tr>
+          
+           
+  
+          
+          <tr>
+            <td colspan="2">
+              <button type="button" (click)="addAlbum()">
+                Добавить
+              </button><br />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
