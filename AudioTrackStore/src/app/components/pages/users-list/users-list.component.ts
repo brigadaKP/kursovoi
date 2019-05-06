@@ -23,7 +23,7 @@ export class UsersListComponent implements OnInit {
     });
 
     console.log(this.item);
-  }
 
+  }
 
 }
