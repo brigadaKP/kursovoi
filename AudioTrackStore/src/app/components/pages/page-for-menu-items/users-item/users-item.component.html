@@ -39,12 +39,12 @@
           </label><br />
         </td>
         <td class="isBlock">
-          <button type="button" *ngIf="user.active; else unset" (click)="isCheckedBlock  ('unblock', i)">
-            Разблокировать
+          <button type="button" *ngIf="user.active; else unset" (click)="isCheckedBlock  ('block', i)">
+            Блокировать
           </button>
           <ng-template #unset>
-            <button type="button" (click)="isCheckedBlock('block', i)" #unset>
-              Блокировать
+            <button type="button" (click)="isCheckedBlock('unblock', i)" #unset>
+              Разблокировать
             </button>
           </ng-template>
         </td>
@@ -53,7 +53,7 @@
   </table>
   <div>
     <p>
-      <button class="buttonSave" type="button" (click)="save()">
+      <button class="buttonSave" type="button" (click)="editUsers()">
       Сохранить
     </button>
     </p>
