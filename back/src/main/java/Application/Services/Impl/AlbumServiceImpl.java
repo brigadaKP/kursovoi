@@ -21,8 +21,8 @@ public class AlbumServiceImpl implements AlbumService {
   }
 
   @Override
-  public Album findAlbumByName(String name) {
-    return albumRepository.findAlbumByName(name);
+  public Iterable<Album>  findAllByName(String name) {
+    return albumRepository.findAllByName(name);
   }
 
   @Override

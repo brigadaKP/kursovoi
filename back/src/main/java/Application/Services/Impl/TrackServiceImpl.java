@@ -1,6 +1,5 @@
 package Application.Services.Impl;
 
-import Application.Models.Genre;
 import Application.Models.Track;
 import Application.Repositores.TrackRepository;
 import Application.Services.TrackService;
@@ -22,8 +21,8 @@ public class TrackServiceImpl implements TrackService {
   }
 
   @Override
-  public Track findTrackByName(String name) {
-    return trackRepository.findTrackByName(name);
+  public Iterable<Track> findAllByName(String name) {
+    return trackRepository.findAllByName(name);
   }
 
   @Override
@@ -46,5 +45,6 @@ public class TrackServiceImpl implements TrackService {
   public void delete(Track track) {
     trackRepository.delete(track);
   }
+
 
 }

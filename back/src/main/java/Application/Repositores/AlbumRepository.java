@@ -3,8 +3,10 @@ package Application.Repositores;
 import Application.Models.Album;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Optional;
+
 public interface AlbumRepository extends CrudRepository<Album, Integer> {
-  Album findAlbumByName(String name);
+  Iterable<Album> findAllByName(String name);
 
   //Iterable<Album> findAlbumByGenre(int id);
 

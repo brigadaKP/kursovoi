@@ -2,8 +2,8 @@
 <header>ПОИСК</header>
 <form>
 <div class="search">
-  <input type="search" placeholder="Что вы ищите?" required/>
-  <button type="submit" class="buttonSearch">
+  <input type="search" placeholder="Что вы ищите?" required #name/>
+  <button type="submit" class="buttonSearch" (click)="find(name.value)">
       <img src="../../../assets/images/find.png" alt="search" height="25px" width="25px" />
   </button>
 </div>
@@ -18,13 +18,13 @@
     <table>
       <tr *ngFor="let track of tracks">
         <td>
-            <audio src="{{track.link}}" controls></audio>
+            <audio src="../../../../assets/music/{{track.link}}" controls></audio>
         </td>
         <td class="trackName">
           {{track.name}},  
-          <a href="">{{track.name_album}}</a>, 
-          <a href="">{{track.name_authors}}</a>, 
-          {{track.name_genre}}
+          <a href="">{{track.albums[0].name}}</a>, 
+          <a href="">{{track.authors[0].name}}</a>, 
+          {{track.genre.name}}
         </td>
         <!-- <td>
           <div class="starability-basic">
@@ -58,7 +58,15 @@
      
       <div *ngFor="let playlist of playlists" style="padding: 0.5em" class="col-1-4"> 
         <a routerLink="/playlist-page">
-          <img alt="Обложка" src="../../../../assets/images/{{playlist.name}}.jpg" width="150px" height="150px"/>
+          <div *ngIf="playlist.link_on_cover; else unset">
+            <img alt="Обложка" src="../../../../assets/music/{{playlist.link_on_cover}}" width="150px" height="150px"/>
+          <br>
+          </div>
+          <ng-template #unset>  
+              <img alt="Обложка" src="../../../../assets/images/album.png" width="150px" height="150px"/>
+              <br>
+            </ng-template>
+        
           <br>
           <small>{{playlist.name}}</small>
         </a>

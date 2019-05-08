@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface AlbumService {
 
   Album addAlbum(Album album);
-  Album findAlbumByName(String name);
+  Iterable<Album>  findAllByName(String name);
   Optional<Album> findById(int id);
   Album editAlbum(Album album);
   Iterable<Album> findAll();

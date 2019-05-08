@@ -1,7 +1,7 @@
 <nav>
 
   <div id="tile">
-    <form>
+    <form #myForm="ngForm">
       <table>
         <table style="margin-bottom: 2em;">
           <tr>
@@ -19,13 +19,13 @@
 
             <small>
               <p>
-                <input class="radio" name="Genres" type="radio" value="All" id="All" required checked>
+                <input class="radio" [(ngModel)]="genreFind" name="genreFind" type="radio" value="All" id="All" required checked>
                 <label for="All"> Весь список</label>
               </p>
               <div *ngFor="let genre of genres; let i = index">
                 <p *ngIf="i < 4">
-                  <input class="radio" name="Genres" type="radio" value="{{genre.value}}" id="{{genre.value}}" required>
-                  <label for="{{genre.value}}"> {{genre.value}}</label>
+                  <input class="radio" [(ngModel)]="genreFind" name="genreFind" type="radio" value="{{genre.name}}" id="{{genre.name}}" required>
+                  <label for="{{genre.name}}"> {{genre.name}}</label>
                 </p>
               </div>
 
@@ -34,9 +34,9 @@
               <div>
                 <div *ngFor="let genre of genres; let i = index">
                   <p *ngIf="i >= 4">
-                    <input class="radio" name="Genres" type="radio" value="{{genre.value}}" id="{{genre.value}}"
+                    <input class="radio" [(ngModel)]="genreFind" name="genreFind" type="radio" value="{{genre.name}}" id="{{genre.name}}"
                       required>
-                    <label for="{{genre.value}}"> {{genre.value}}</label>
+                    <label for="{{genre.name}}"> {{genre.name}}</label>
                   </p>
                 </div>
               </div>
@@ -51,11 +51,11 @@
 
             <small>
               <p>
-                <input class="radio" name="Sort" type="radio" value="increase" id="increase" required checked />
+                <input class="radio" [(ngModel)]="Sort" name="Sort" type="radio" value="increase" id="increase" required checked />
                 <label for="increase"> По возрастанию цен</label>
               </p>
               <p>
-                <input class="radio" name="Sort" type="radio" value="decrease" id="decrease" required />
+                <input class="radio" [(ngModel)]="Sort" name="Sort" type="radio" value="decrease" id="decrease" required />
                 <label for="decrease"> По убыванию цен</label>
               </p>
             </small>
@@ -64,7 +64,7 @@
       </table>
 
       <p>
-        <input type="submit" value="Подобрать" class="submitButton" />
+        <input type="submit" value="Подобрать" class="submitButton" (click)="submit(myForm)"/>
       </p>
 
     </form>

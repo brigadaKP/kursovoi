@@ -25,8 +25,8 @@ export class UsersItemComponent implements OnInit {
       console.log(data);
       this.users = data;
       this.users.forEach(user => {
-        user.admin = true;
-        user.user = true;
+        // user.admin = true;
+        // user.user = true;
       });
       console.log(this.users);
       this.allCount = this.users.length;
