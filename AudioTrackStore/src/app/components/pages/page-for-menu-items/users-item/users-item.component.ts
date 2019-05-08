@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { UserService } from '../../../../services/user/user-service.service'
+import { User } from '../../../../classes/user'
+
 @Component({
   selector: 'app-users-item',
   templateUrl: './users-item.component.html',
@@ -8,50 +11,75 @@ import { Component, OnInit } from '@angular/core';
 export class UsersItemComponent implements OnInit {
 
   users: User[];
+
   allCount: number = 0;
   adminCount: number = 0;
   blockCount: number = 0;
   userCount: number = 0;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
+  //constructor() { }
+
 
   ngOnInit() {
 
-    this.users = [
-      {
-        id: "1",
-        userName: "1",
-        password: "1",
-        email: "1",
+    // this.userService.findAll().subscribe(data => {
+    //   this.users = data;
+    // });
 
-        isAdmin: true,
-        isUser: true,
-        isBlock: false
-      },
-      {
-        id: "2",
-        userName: "2",
-        password: "2",
-        email: "2",
+    //  this.users = [
+    //    {
+    //      id: "1",
+    //      login: "1",
+    //      password: "1",
+    //      email: "1",
 
-        isAdmin: true,
-        isUser: true,
-        isBlock: false
-      }
-    ]
+    //      number_of_albums:0,
+    //      number_of_tracks:0,
+    //      time_tracks: "0",
+    //      price_tracks:"0",
 
-    this.allCount = this.users.length;
+    //      admin: true,
+    //      user: true,
+    //      active: false
+    //    },
+    //    {
+    //      id: "2",
+    //      login: "2",
+    //      password: "2",
+    //      email: "2",
 
-    this.users.forEach(user => {
-      if (user.isAdmin) {
-        this.adminCount++;
-      }
-      if (user.isBlock) {
-        this.blockCount++;
-      }
-      if (user.isUser) {
-        this.userCount++;
-      }
+    //      number_of_albums:0,
+    //      number_of_tracks:0,
+    //      time_tracks: "0",
+    //      price_tracks:"0",
+
+    //      isAdmin: true,
+    //      isUser: true,
+    //      isActive: false
+    //    }
+    //  ]
+
+    this.userService.getAllUsers().subscribe(data => {
+      this.users = data;
+      this.users.forEach(user => {
+        user.admin = true;
+        user.user = true;
+      });
+      console.log(this.users);    
+      this.allCount = this.users.length;
+
+     this.users.forEach(user => {
+       if (user.admin) {
+         this.adminCount++;
+       }
+       if (user.active) {
+         this.blockCount++;
+       }
+       if (user.user) {
+         this.userCount++;
+       }
+    }); 
     });
 
   }
@@ -60,11 +88,11 @@ export class UsersItemComponent implements OnInit {
 
     this.adminCount = 0;
 
-    this.users.forEach(user => {
-      if (user.isAdmin) {
-        this.adminCount++;
-      }
-    });
+     this.users.forEach(user => {
+       if (user.admin) {
+         this.adminCount++;
+        }
+     });
 
     return false;
   }
@@ -74,10 +102,10 @@ export class UsersItemComponent implements OnInit {
     this.userCount = 0;
 
     this.users.forEach(user => {
-      if (user.isUser) {
+       if (user.user) {
         this.userCount++;
-      }
-    });
+     }
+   });
 
     return false;
   }
@@ -85,28 +113,32 @@ export class UsersItemComponent implements OnInit {
   isCheckedBlock(isBlock: string, index: number) {
 
     if (isBlock == "block") {
-      this.users[index].isBlock = true;
+      this.users[index].active = true;
       this.blockCount++;
     } else if (isBlock == "unblock") {
-      this.users[index].isBlock = false;
+      this.users[index].active = false;
       this.blockCount--;
     }
-    console.log(this.users[index].isAdmin);
+    console.log(this.users[index].admin);
 
     return false;
+  }
+
+  save(){
+    console.log(this.users);
   }
 
 }
 
 
-interface User {
-  id: string;
-  userName: string;
-  password: string;
-  email: string;
+// interface User {
+//   id: string;
+//   userName: string;
+//   password: string;
+//   email: string;
 
-  isAdmin: boolean;
-  isUser: boolean;
-  isBlock: boolean;
+//   isAdmin: boolean;
+//   isUser: boolean;
+//   isBlock: boolean;
 
-}
+// }

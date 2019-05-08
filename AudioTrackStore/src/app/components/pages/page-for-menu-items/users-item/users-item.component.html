@@ -18,28 +18,28 @@
     <tbody>
       <tr *ngFor="let user of users; let i = index">
         <td>
-          {{user.isAdmin}}
+          {{user.login}}
         </td>
         <td>
-          {{user.isUser}}
+          {{user.password}}
         </td>
         <td>
-          asd
+          {{user.email}}
         </td>
         <td>
-          <input type="checkbox" class="checkbox" id="isAdmin+{{user.id}}" [(ngModel)]="user.isAdmin"
-            name="user.isAdmin" (ngChange)="user.isAdmin" />
+          <input type="checkbox" class="checkbox" id="isAdmin+{{user.id}}" [(ngModel)]="user.admin"
+            name="user.admin" (ngChange)="user.admin" />
           <label for="isAdmin+{{user.id}}">
             Admin
           </label><br />
-          <input type="checkbox" class="checkbox" id="isUser+{{user.id}}" [(ngModel)]="user.isUser" name="user.isUser"
-            (ngChange)="user.isUser" />
+          <input type="checkbox" class="checkbox" id="isUser+{{user.id}}" [(ngModel)]="user.user" name="user.user"
+            (ngChange)="user.user" />
           <label for="isUser+{{user.id}}">
             User
           </label><br />
         </td>
         <td class="isBlock">
-          <button type="button" *ngIf="user.isBlock; else unset" (click)="isCheckedBlock  ('unblock', i)">
+          <button type="button" *ngIf="user.active; else unset" (click)="isCheckedBlock  ('unblock', i)">
             Разблокировать
           </button>
           <ng-template #unset>
@@ -51,6 +51,13 @@
       </tr>
     </tbody>
   </table>
+  <div>
+    <p>
+      <button class="buttonSave" type="button" (click)="save()">
+      Сохранить
+    </button>
+    </p>
+  </div>
 </div>
 <br />
 <p class="click" (click)="checkedAdmin()">

@@ -117,3 +117,28 @@ button {
     text-decoration: underline;
     cursor: pointer;
   }
+
+  /* buttonSave */
+
+.buttonSave { 
+  display: inline-block;
+  padding: .9em;
+  text-align: center;
+  background-color: #d2374a;
+  border: none;
+  border-radius: 2px;
+  color: #d7ecf4;
+  font-size: 90%;
+}
+
+.buttonSave:hover {
+  background-color: #c91c30;
+  color: #d7ecf4;
+  text-decoration: none;
+}
+
+.buttonSave:active {
+  background-color: #c91c30;
+  color: #d7ecf4;
+  transform: translatey(2px);
+}
