@@ -9,11 +9,19 @@ export class UserService {
    private usersUrl: string;
 
    constructor(private http: HttpClient) {
-    //  this.usersUrl = 'http://localhost:8080/all';
+      this.usersUrl = 'http://localhost:8080/users-list';
    }
  
    getAllUsers(): Observable<any> {
     return this.http.get('http://localhost:8080/users-list');
+  }
+
+  editUser(user:User): Observable<User>{
+    return this.http.post<User>(this.usersUrl, user);
+  }
+
+  public createUser(user:User) {
+    return this.http.post<User>(this.usersUrl, user);
   }
 
  }
