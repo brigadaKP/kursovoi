@@ -7,9 +7,11 @@
 export class UserService {
  
    private usersUrl: string;
+   private usersUrl2: string;
 
    constructor(private http: HttpClient) {
       this.usersUrl = 'http://localhost:8080/users-list';
+      this.usersUrl2 = 'http://localhost:8080/users-settings';
    }
  
    getAllUsers(): Observable<any> {
@@ -21,7 +23,12 @@ export class UserService {
   }
 
   public createUser(user:User) {
-    return this.http.post<User>(this.usersUrl, user);
+    return this.http.post<User>(this.usersUrl2, user);
+  }
+
+  findUserById(id:String): Observable<User> {
+    console.log("findUserById");
+    return this.http.post<User>("http://localhost:8080/users-settings", id);
   }
 
  }

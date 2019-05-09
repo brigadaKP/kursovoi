@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { UserService } from '../../../services/user/user-service.service'
+import { User } from '../../../classes/user'
+
 @Component({
   selector: 'app-article-settings',
   templateUrl: './article-settings.component.html',
@@ -9,17 +12,19 @@ export class ArticleSettingsComponent implements OnInit {
 
   @Input() background: string;
   
-  userName: string;
-  password: string;
-  email: string;
+  user: User;
 
-  constructor() { }
+  constructor(private userService: UserService) { 
+    
+  }
 
   ngOnInit() {
 
-    this.userName = "userName";
-    this.password = "qwerty";
-    this.email = "a@mail.ru";
+    this.userService.findUserById("1").subscribe(data => {  /////////////////////////////**********************/ */ ID
+      this.user = data;
+      console.log(this.user);
+      });
+
   }
 
   saveChange(userName, password, email, passwordConfirm) {
@@ -47,9 +52,18 @@ export class ArticleSettingsComponent implements OnInit {
     }
     else {
       alert("OK");
-      this.password = password;
-      this.userName = userName;
-      this.email = email;
+      this.user.password = password;
+      this.user.login = userName;
+      this.user.email = email;
+      console.log(this.user);
+
+      this.userService.editUser(this.user)                  /////////////////////////////**********************/ */ ID
+        .subscribe((response) => {
+          console.log(response);
+       }, (error) => {
+         console.log(error);
+       });
+  
     };
 
     return false;
