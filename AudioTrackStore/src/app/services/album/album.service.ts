@@ -12,7 +12,7 @@ export class AlbumService {
   private albumsUrl2: string;
 
   constructor(private http: HttpClient) {
-    this.albumsUrl = 'http://localhost:8080/albums-list';
+    this.albumsUrl = 'http://localhost:8080/albums/albums-list';
     this.albumsUrl2 = 'http://localhost:8080/albums-list/id';
  }
 
@@ -33,11 +33,11 @@ public deleteAlbums(playlist:Playlist) {
 }
 
 public findAlbums(find:String): Observable<any> {
-  return this.http.post<Playlist>(this.albumsUrl, find);
+  return this.http.post<Playlist>("http://localhost:8080/albums/albums-find", find);
 }
 
 public findAlbumById(id:String) {
-  return this.http.post<Playlist>(this.albumsUrl2, id);
+  return this.http.post<Playlist>("http://localhost:8080/albums/albums-list/"+id, id);
 }
 
 }

@@ -13,7 +13,7 @@ export class TrackService {
   private tracksUrl2: string;
 
    constructor(private http: HttpClient) {
-      this.tracksUrl = 'http://localhost:8080/tracks-list';
+      this.tracksUrl = 'http://localhost:8080/tracks/tracks-list';
       this.tracksUrl2 = 'http://localhost:8080/tracks-list/find';
    }
  
@@ -34,11 +34,11 @@ export class TrackService {
   }
 
   public findTrack(find:String): Observable<any> {
-    return this.http.post<Track>(this.tracksUrl, find);
+    return this.http.post<Track>("http://localhost:8080/tracks/tracks-find", find);
   }
 
   public findTracksAndAlbumsByGenre(id_genre:String): Observable<any> {
-    return this.http.post<Track>(this.tracksUrl2, id_genre);
+    return this.http.post<Track>("http://localhost:8080/tracks/tracks-findByGenre", id_genre);
   }
 
  }

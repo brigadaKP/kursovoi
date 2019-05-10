@@ -5,11 +5,11 @@ import Application.Services.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("albums")
 public class AlbumController {
 
   @Autowired
@@ -22,14 +22,14 @@ public class AlbumController {
     return albumService.findAll();
   }
 
-  @PostMapping(path = "/albums-list")
+  @PostMapping(path = "/albums-find")
   public @ResponseBody
   Iterable<Album> findAlbums(@RequestBody String string) {
     System.out.println("/albums-list --- findAlbums");
     return albumService.findAllByName(string);
   }
 
-  @PostMapping(path = "/albums-list/id")
+  @PostMapping(path = "/albums-find/id")
   public @ResponseBody
   Optional<Album> findById(@RequestBody String id){
     System.out.println("/albums-list/" + id);

@@ -1,6 +1,7 @@
 package Application.Services.Impl;
 
 import Application.Models.Track;
+import Application.Models.User;
 import Application.Repositores.TrackRepository;
 import Application.Services.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,5 @@ public class TrackServiceImpl implements TrackService {
   public void delete(Track track) {
     trackRepository.delete(track);
   }
-
 
 }

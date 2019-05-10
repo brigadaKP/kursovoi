@@ -13,7 +13,4 @@ public interface AlbumService {
   Iterable<Album> findAll();
   void delete(Album album);
 
-  //Iterable<Album> findAlbumByGenre(int id);
-  //Iterable<Album> findAlbumsByTracksIs(int id);
-  //Iterable<Album> findAlbumByAuthor(int id);
 }

@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("genre")
 public class GenreController {
 
   @Autowired
@@ -28,8 +29,6 @@ public class GenreController {
   public @ResponseBody
   String findTracksAndAlbumsByGenre(@RequestBody String string) {
     System.out.println("/genres-list --- findTracksAndAlbumsByGenre: " + string);
-
-    //Iterable<Track> tracks = genreService.findAllByName(string);
 
     return string;
   }

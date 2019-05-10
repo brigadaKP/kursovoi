@@ -6,12 +6,12 @@
 		<h4 align="center">Войти с помощью электронной почты или имени пользователя</h4><br/>
 	</div>
 	<div class="form">
-		<form (submit)="logIn(Login.value, Password.value)">
+		<form>
 			<label for="login">Ваш логин:</label><br/>
-			<input type="text"  name="login" id="login" placeholder="Введите логин" required #Login/><br/><br/>
+			<input type="text" [(ngModel)] = "user.login" name="user.login" id="login" placeholder="Введите логин" required #Login/><br/><br/>
     	 	<label for="password">Ваш пароль:</label><br/>
-     	 	<input type="password"  name="password" id="password" placeholder="Введите пароль" required #Password/><br/><br/>
-      		<button type="submit"><b>Войти</b></button><br/>
+     	 	<input type="password" [(ngModel)] = "user.password"  name="user.password" id="password" placeholder="Введите пароль" required #Password/><br/><br/>
+      		<button type="button" (click)="logIn(Login.value, Password.value)"><b>Войти</b></button><br/>
           <p class="message">Вы ещё не зарегистрированы?<br/>
             <a routerLink="/registration">Создать аккаунт</a>
           </p>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { UserService } from '../../../services/user/user-service.service'
+import { AuthService } from '../../../services/user/auth.service'
 import { User } from '../../../classes/user'
 
 @Component({
@@ -12,15 +12,15 @@ export class ArticleSettingsComponent implements OnInit {
 
   @Input() background: string;
   
-  user: User;
+  user: User = new User();
 
-  constructor(private userService: UserService) { 
-    
+  constructor(private userService: AuthService) { 
+    this.user.id = "9";
   }
 
   ngOnInit() {
 
-    this.userService.findUserById("1").subscribe(data => {  /////////////////////////////**********************/ */ ID
+    this.userService.findUserById(this.user.id).subscribe(data => {  /////////////////////////////**********************/ */ ID
       this.user = data;
       console.log(this.user);
       });

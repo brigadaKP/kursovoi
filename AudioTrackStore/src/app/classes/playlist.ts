@@ -1,11 +1,11 @@
 export class Playlist {
-    id_album: string;
-    name: string;
-    yera: string;
-    number_of_tracks: number;
-    time: number;               
-    price: string;
-    link_on_cover: string;
+    id_album: String;
+    name: String;
+    yera: String;
+    number_of_tracks: Number;
+    time: Number;               
+    price: String;
+    link_on_cover: String;
     
     tracks:any;
 }

@@ -3,10 +3,8 @@ package Application.Controllers;
 import Application.DTO.TrackDTO.TrackDTO;
 import Application.DTO.TrackDTO.TrackWithGenreAndAlbumAndAuthorDTO;
 import Application.Models.Track;
-import Application.Models.User;
 import Application.Services.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -14,6 +12,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("tracks")
 public class TrackController {
 
   @Autowired
@@ -23,7 +22,7 @@ public class TrackController {
 
   @GetMapping(path = "/tracks-list")
   public @ResponseBody
-  ResponseEntity<List<TrackDTO>> getAllTracks() {
+  List<TrackDTO> getAllTracks() {
     System.out.println("/tracks-list --- AllTracks");
 
     Iterable<Track> tracks = trackService.findAll();
@@ -31,9 +30,9 @@ public class TrackController {
     return getTracks(tracks);
   }
 
-  @PostMapping(path = "/tracks-list")
+  @PostMapping(path = "/tracks-find")
   public @ResponseBody
-  ResponseEntity<List<TrackDTO>> findTracks(@RequestBody String string) {
+  List<TrackDTO> findTracks(@RequestBody String string) {
     System.out.println("/tracks-list --- findTracks: " + string);
 
     Iterable<Track> tracks = trackService.findAllByName(string);
@@ -41,9 +40,9 @@ public class TrackController {
     return getTracks(tracks);
   }
 
-  @PostMapping(path = "/tracks-list/find")
+  @PostMapping(path = "/tracks-findByGenre")
   public @ResponseBody
-  ResponseEntity<List<TrackDTO>> findTracksAndAlbumsByGenre(@RequestBody String id_genre) {
+  List<TrackDTO> findTracksAndAlbumsByGenre(@RequestBody String id_genre) {
     System.out.println("/tracks-list --- findTracksAndAlbumsByGenre: " + id_genre);
 
     Iterable<Track> tracks = trackService.findAll();
@@ -57,22 +56,22 @@ public class TrackController {
             trackDTOList.add(TrackWithGenreAndAlbumAndAuthorDTO.fromModel(track));
           }
         }
-        return ResponseEntity.ok(trackDTOList);
+        return trackDTOList;
       } else {
-        return ResponseEntity.notFound().build();
+        return null;
       }
     }
   }
 
-  ResponseEntity<List<TrackDTO>> getTracks(Iterable<Track> tracks){
+  List<TrackDTO> getTracks(Iterable<Track> tracks){
     List<TrackDTO> trackDTOList = new ArrayList<>();
     if (tracks.iterator().hasNext()) {
       for (Track track : tracks) {
         trackDTOList.add(TrackWithGenreAndAlbumAndAuthorDTO.fromModel(track));
       }
-      return ResponseEntity.ok(trackDTOList);
+      return trackDTOList;
     } else {
-      return ResponseEntity.notFound().build();
+      return null;
     }
   }
 }

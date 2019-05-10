@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+import { UserService } from '../../../services/user/user-service.service';
+import { AuthService } from '../../../services/user/auth.service';
+import { User } from 'src/app/classes/user';
+
+class LoginUser{
+  userName: string;
+  password: string;
+}
+
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
@@ -7,16 +16,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorizationComponent implements OnInit {
 
-  userName: string;
-  password: string;
+  loginUser:LoginUser = new LoginUser();
+  user:User = new User();
 
-  constructor() { }
+  constructor(private userService:AuthService) { }
 
   ngOnInit() {
 
-    this.userName = "userName";
-    this.password = "qwerty";
-    
   }
 
   logIn(userName, password) {
@@ -42,10 +48,22 @@ export class AuthorizationComponent implements OnInit {
       return false;
     }
     else {
-      alert("OK");
-      window.open("/","_self");
-      return false;
-    };
-  }
+      
+      console.log(userName);
+      console.log(this.user.password);
 
+      //alert("Неверный логин или пароль");
+
+      this.userService.signIn(this.user)
+
+      // .subscribe((response) => {
+      //   console.log(response);
+      //   alert("OK");
+      // }, (error) => {
+      //   console.log(error);
+      //   }
+      // );
+      ;
+    }
+  }
 }

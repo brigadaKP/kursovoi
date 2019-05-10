@@ -1,6 +1,7 @@
 package Application.Services;
 
 import Application.Models.Track;
+import Application.Models.User;
 
 import java.util.Optional;
 
@@ -13,7 +14,5 @@ public interface TrackService {
   Iterable<Track> findAll();
   void delete(Track track);
 
- // Iterable<Track> findTracksByGenre(Genre genre);
- //  Iterable<Track> findAllByGenre(int id);
- // Iterable<Track> findTracksByAlbums(int id);
+
 }

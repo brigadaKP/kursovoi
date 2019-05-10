@@ -1,6 +1,12 @@
 package Application.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -17,7 +23,7 @@ public class User {
   @Column(name = "email")
   private String email;
 
-  @Column(name = "login")
+  @Column(name = "login", unique = true)
   private String login;
 
   @Column(name = "password")
@@ -35,10 +41,47 @@ public class User {
   @Column(name = "price_tracks")
   private String price_tracks;
 
-//  @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-//  @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-//  @Enumerated(EnumType.STRING)
-//  private Set<Role> roleSet;
+  @Column(name = "admin")
+  private boolean admin;
+
+  @Column(name = "user")
+  private boolean user;
+
+  @JsonBackReference
+  @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinTable(name = "users_tracks", joinColumns = {@JoinColumn(name = "user_id") },
+    inverseJoinColumns = {@JoinColumn(name = "track_id") })
+  private Set<Track> tracks = new HashSet<>();
+
+  public Set<Track> getTracks() {
+    return tracks;
+  }
+
+  public void addTrack(Track track){
+    tracks.add(track);
+  }
+
+  public void setTracks(Set<Track> tracks) {
+    this.tracks = tracks;
+  }
+
+  public boolean isAdmin() {
+    return admin;
+  }
+
+  public void setAdmin(boolean admin) {
+    this.admin = admin;
+  }
+
+  public boolean isUser() {
+    return user;
+  }
+
+  public void setUser(boolean user) {
+    this.user = user;
+  }
+
+  public User(){ }
 
   public Integer getId() {
     return id;
@@ -111,11 +154,6 @@ public class User {
   public void setPrice_tracks(String price_tracks) {
     this.price_tracks = price_tracks;
   }
-
-//  public Set<Role> getRoleSet() { return roleSet; }
-//
-//  public void setRoleSet(Set<Role> roleSet) { this.roleSet = roleSet; }
-
 
   @Override
   public String toString() {

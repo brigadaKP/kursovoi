@@ -30,9 +30,4 @@ public class GenreServiceImpl implements GenreService {
     return saveGenre;
   }
 
-
-//  @Override
-//  public Genre findGenreByTracks(int id) {
-//    return genreRepository.findGenreByTracks(id);
-//  }
 }

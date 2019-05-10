@@ -1,6 +1,6 @@
 // components/toolbar.component.ts
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth-service.service';
+import { AuthService } from '../../services/user/auth.service';
 
 @Component({
   selector: 'toolbar',
@@ -15,9 +15,9 @@ import { AuthService } from '../../services/auth-service.service';
 export class ToolbarComponent {
   constructor(private auth: AuthService) {}
   login() {
-    this.auth.login();
+   // this.auth.login();
   }
   logout() {
-    this.auth.logout();
+    //this.auth.logout();
   }
 }

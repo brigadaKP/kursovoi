@@ -2,6 +2,7 @@ package Application.Repositores;
 
 import Application.Models.Genre;
 import Application.Models.Track;
+import Application.Models.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface TrackRepository extends CrudRepository<Track, Integer> {

@@ -3,6 +3,7 @@ import { ActivatedRoute} from '@angular/router';
 
 import { TrackService } from '../../../services/track/track-service.service';
 import { AlbumService } from '../../../services/album/album.service';
+import { UserService } from '../../../services/user/user-service.service';
 import { Track } from '../../../classes/track';
 import { Playlist } from '../../../classes/playlist';
 
@@ -67,14 +68,10 @@ export class ArticleFindComponent implements OnInit {
        console.log(response);
        if(response) {
           this.playlists.push(response);
-       } else {
-         alert("По альбомам ничего не найдено!");
-       }
+           }
     }, (error) => {
       console.log(error);
-      if(error.status == 404) {
-        alert("По альбомам ничего не найдено!");
-      }
+      
     });
     
         }
@@ -83,7 +80,8 @@ export class ArticleFindComponent implements OnInit {
       console.log(this.playlists.length);
   }
 
-  constructor(private trackService: TrackService, private albumService: AlbumService, private route: ActivatedRoute) { }
+  constructor(private trackService: TrackService, private albumService: AlbumService, private route: ActivatedRoute,
+    private userService: UserService) { }
 
   ngOnInit() {
 
@@ -146,6 +144,12 @@ export class ArticleFindComponent implements OnInit {
   });
   }
 
+  buyTrack(track:Track){
+    console.log(track);
+    this.userService.buyTrack("9", track).subscribe((response) => {
+      console.log(response);
+    }, (error) => { console.log(error) });
+  }
   
 
 }

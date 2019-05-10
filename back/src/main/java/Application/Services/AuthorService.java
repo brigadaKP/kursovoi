@@ -13,6 +13,5 @@ public interface AuthorService {
   Iterable<Author> findAll();
   void delete(Author author);
 
-  //Iterable<Author> findAuthorsByGenres(int id);
-  //Iterable<Author> findAuthorsByTracksIn(int id);
+
 }

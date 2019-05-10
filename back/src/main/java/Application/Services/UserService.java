@@ -1,5 +1,6 @@
 package Application.Services;
 
+import Application.DTO.UserDTO.UserDTO;
 import Application.Models.User;
 
 import java.util.Optional;
@@ -11,4 +12,6 @@ public interface UserService {
     Optional<User> findById(int id);
     User editUser(User user);
     Iterable<User> getAll();
+
+
 }

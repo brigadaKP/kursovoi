@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserService } from '../../../../services/user/user-service.service'
-import { User } from '../../../../classes/user'
+import { AuthService } from '../../../../services/user/auth.service';
+import { User, UserTracks } from '../../../../classes/user';
 
 @Component({
   selector: 'app-users-item',
@@ -17,7 +17,7 @@ export class UsersItemComponent implements OnInit {
   blockCount: number = 0;
   userCount: number = 0;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: AuthService) { }
 
   ngOnInit() {
 
@@ -35,10 +35,10 @@ export class UsersItemComponent implements OnInit {
         if (user.admin) {
           this.adminCount++;
         }
-        if (user.active) {
+        if (!user.active) {
           this.blockCount++;
         }
-        if (user.user) {
+        if (user.user && user.active) {
           this.userCount++;
         }
       });
@@ -76,7 +76,8 @@ export class UsersItemComponent implements OnInit {
 
     if (isBlock == "unblock") {
       this.users[index].active = true;
-      this.blockCount++;
+      this.blockCount--;
+      this.userCount++;
 
       this.userService.editUser(this.users[index])
       .subscribe((response) => {
@@ -87,7 +88,8 @@ export class UsersItemComponent implements OnInit {
 
     } else if (isBlock == "block") {
       this.users[index].active = false;
-      this.blockCount--;
+      this.blockCount++;
+      this.userCount--;
 
       this.userService.editUser(this.users[index])
       .subscribe((response) => {

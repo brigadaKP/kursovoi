@@ -12,7 +12,7 @@ export class GenreService {
   private genresUrl: string;
 
   constructor(private http: HttpClient) {
-     this.genresUrl = 'http://localhost:8080/genres-list';
+     this.genresUrl = 'http://localhost:8080/genre/genres-list';
   }
 
   getAllGenres(): Observable<any> {

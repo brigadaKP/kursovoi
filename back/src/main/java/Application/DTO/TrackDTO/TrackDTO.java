@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TrackDTO {
   @JsonProperty("id")
-  private Long id;
+  private Integer id;
   @JsonProperty("name")
   private String name;
   @JsonProperty("year")
@@ -17,11 +17,11 @@ public class TrackDTO {
   @JsonProperty("price")
   private String price;
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
