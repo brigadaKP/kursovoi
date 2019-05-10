@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-// import { link } from 'fs';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
+
+import { TrackService } from '../../../services/track/track-service.service';
+import { AlbumService } from '../../../services/album/album.service';
+import { UserService } from '../../../services/user/user-service.service';
+import { Track } from '../../../classes/track';
+import { Playlist } from '../../../classes/playlist';
 
 @Component({
   selector: 'app-article-find',
@@ -10,100 +16,140 @@ export class ArticleFindComponent implements OnInit {
 
   tracks: Track[];
   playlists: Playlist[];
+  findGenre: String;
+  sort: String;
 
-  constructor() { }
+  whoAmI(message) {
+    console.log(message[0]);
+    this.trackService.findTracksAndAlbumsByGenre(message[0])
+      .subscribe((response) => {
+         console.log(response);
+         if(response) {
+           if(message[1] == "increase"){
+             this.tracks = response;
+             this.tracks.sort(function (a, b) {
+                                if (a.price > b.price) {
+                                  return 1;
+                                }                 
+                                if (a.price < b.price) {
+                                  return -1;
+                                }
+                                // a должно быть равным b
+                                  return 0;
+                                });
+           } else {
+            this.tracks = response.sort(function (a, b) {
+                                          if (a.price < b.price) {
+                                            return 1;
+                                          }
+                                          if (a.price > b.price) {
+                                            return -1;
+                                          }
+                                          // a должно быть равным b
+                                            return 0;
+                                          });
+           }
+            
+         } else {
+           alert("По трекам ничего не найдено!");
+         }
+      }, (error) => {
+        console.log(error);
+        if(error.status == 404) {
+          alert("По трекам ничего не найдено!");
+        }
+      });
+
+      this.playlists.length = 0;
+      for (let i = 0; i < this.tracks.length; i++) {
+        for (let j = 0; j < this.tracks[i].albums.length; j++) {
+          this.albumService.findAlbumById(this.tracks[i].albums[j].id)
+          .subscribe((response) => {
+       console.log(response);
+       if(response) {
+          this.playlists.push(response);
+           }
+    }, (error) => {
+      console.log(error);
+      
+    });
+    
+        }
+      }
+      console.log(this.tracks.length);
+      console.log(this.playlists.length);
+  }
+
+  constructor(private trackService: TrackService, private albumService: AlbumService, private route: ActivatedRoute,
+    private userService: UserService) { }
 
   ngOnInit() {
 
-    this.tracks = [
-      {
-        id: 'id_трека1',
-        name: 'Help!',
-        name_album: 'Help!',
-        name_genre: 'Рок',
-        year: 1965,
-        time: 2.19,
-        link: '../../../../assets/music/Help.mp3',
-        name_authors: 'The Beatles',
-        price: '3'
-      },
-      {
-        id: 'id_трека2',
-        name: 'We are the champions',
-        name_album: 'News of the World',
-        name_genre: 'Рок',
-        year: 1977,
-        time: 2.59,
-        link: '../../../../assets/music/queen_-_we_are_the_champions_(zaycev.net).mp3',
-        name_authors: 'Queen',
-        price: '4'
-      },
-      {
-        id: 'id_трека3',
-        name: '(I Can’t Get No) Satisfaction',
-        name_album: 'single',
-        name_genre  : 'Рок',
-        year: 1965,
-        time: 3.44,
-        link: '../../../../assets/music/Rolling_Stones_-_Satisfaction_(iPleer.fm).mp3',
-        name_authors: ' The Rolling Stones',
-        price: '4'
-      }
-    ]
+    this.trackService.getAllTracks().subscribe(data => {
+      this.tracks = data;
+    
+      console.log("Tracks: " + this.tracks);
+    });
 
-    this.playlists = [
-      {
-      id_album:'id_альбома 1',
-      name: 'Help!',
-      yera: 1965,
-      number_of_tracks: 10,
-      link: 'Help!',
-      time: 35.25,
-      price:'25'
-      },
-      {
-        id_album:'id_альбома 2',
-        name: 'News of the World',
-        yera: 1965,
-        number_of_tracks: 10,
-        link: '',
-        time: 35.25,
-        price:'25'
-        },
-        {
-          id_album:'id_альбома 3',
-          name: 'Waking Up',
-          yera: 1965,
-          number_of_tracks: 10,
-          link: '',
-          time: 35.25,
-          price:'25'
-          }
-    ]
+    this.albumService.getAllAlbums().subscribe(data => {
+      this.playlists = data;
+    
+      console.log("Albums: " + this.playlists[3].link_on_cover);
+
+    }); 
+
   }
 
-}
+  find(find:String) {
+    this.tracks = null;
+    this.trackService.findTrack(find)
+      .subscribe((response) => {
+         console.log(response);
+         if(response) {
+            this.tracks = response;
+         } else {
+           alert("По трекам ничего не найдено!");
+         }
+      }, (error) => {
+        console.log(error);
+        if(error.status == 404) {
+          alert("По трекам ничего не найдено!");
+        }
+      });
 
+      this.playlists = null;
+    this.albumService.findAlbums(find)
+      .subscribe((response) => {
+         console.log(response);
+         if(response) {
+            this.playlists = response;
+         } else {
+           alert("По альбомам ничего не найдено!");
+         }
+      }, (error) => {
+        console.log(error);
+        if(error.status == 404) {
+          alert("По альбомам ничего не найдено!");
+        }
+      });
+  }
 
+  functoun(){
+    this.route.queryParams.subscribe(params => { 
+      
+    this.findGenre = params.findGenre;
+    this.sort = params.sort;
+    
+    console.log(this.findGenre + " " + this.sort);
+  });
+  }
 
-interface Track {
-  id: string,
-  name: string,
-  name_album: string,
-  name_genre: string,
-  year: number,
-  time: number,            //Time
-  link: string,            //ссылка
-  name_authors: string,
-  price: string
-}
+  buyTrack(track:Track){
+    console.log(track);
+    this.userService.buyTrack("9", track).subscribe((response) => {
+      console.log(response);
+    }, (error) => { console.log(error) });
+  }
+  
 
-interface Playlist {
-  id_album: string,
-  name: string,
-  yera: number,
-  number_of_tracks: number,
-  link: string;
-  time: number,            //Time
-  price: string
 }

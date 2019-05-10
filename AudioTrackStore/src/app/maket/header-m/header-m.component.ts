@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from '../../services/user/auth.service';
+
 @Component({
   selector: 'app-header-m',
   templateUrl: './header-m.component.html',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderMComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:AuthService) { }
 
   ngOnInit() {
+  }
+
+  logOut(){
+    this.userService.logOut();
   }
 
 }

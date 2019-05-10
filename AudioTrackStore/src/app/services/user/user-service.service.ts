@@ -1,27 +1,30 @@
  import { Injectable } from '@angular/core';
- import { HttpClient, HttpHeaders } from '@angular/common/http';
- import { User } from '../../classes/user';
+ import { AuthToken, User, UserLogin, UserTracks} from "../../classes/user";
+ import {HttpClient} from "@angular/common/http";
+ import {NavigationExtras, Router} from "@angular/router";
  import { Observable } from 'rxjs/Observable';
+
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 
 @Injectable({providedIn: 'root'})
 export class UserService {
  
-   private usersUrl: string;
+  constructor(private http: HttpClient) { }
 
-   constructor(private http: HttpClient) {
-      this.usersUrl = 'http://localhost:8080/users-list';
-   }
- 
-   getAllUsers(): Observable<any> {
-    return this.http.get('http://localhost:8080/users-list');
-  }
+ getAllTracks(id): Observable<any> {
+  return this.http.post<UserTracks>("http://localhost:8080/user/"+id, id);
+}
 
-  editUser(user:User): Observable<User>{
-    return this.http.post<User>(this.usersUrl, user);
-  }
+editTrack(id): Observable<User> {
+  return this.http.post<User>("http://localhost:8080/user/tracks-list", id);
+}
 
-  public createUser(user:User) {
-    return this.http.post<User>(this.usersUrl, user);
-  }
+public buyTrack(id_track, id_user) {
+  return this.http.post<User>("http://localhost:8080/user/buyTrack", id_track, id_track);
+}
 
- }
+public buyAlbum(id_album, id_user) {
+  return this.http.post<User>("http://localhost:8080/user/"+id_user+"/byAlbum", id_album);
+}
+
+}

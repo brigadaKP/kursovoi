@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'cards', component: CardsComponent},
   { path: 'settings', component: SettingsComponent},
   { path: 'playlist-page', component: PlaylistPageComponent},
-  { path: 'login', component: AuthorizationComponent},
+  { path: 'signin', component: AuthorizationComponent},
   { path: 'registration', component: RegistrationComponent},
   { path: 'create-playlist', component: CreatPlaylistPageComponent},
   { path: 'users-list', component: UsersListComponent }

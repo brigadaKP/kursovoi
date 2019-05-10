@@ -16,7 +16,7 @@ public class Track {
   @Id
   @Column(name="id_track")
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id_track;
+  private Integer id_track;
 
   @Column(name = "name")
   private String name;
@@ -63,7 +63,7 @@ public class Track {
   }
 
   //ManyToMany Author
-  @JsonBackReference
+  @JsonManagedReference
   @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinTable(name = "performers_tracks", joinColumns = { @JoinColumn(name = "track_id")},
                                           inverseJoinColumns = { @JoinColumn(name = "author_id")})
@@ -77,11 +77,26 @@ public class Track {
     this.authors = authors;
   }
 
-  public Long getId_track() {
+  //ManyToMany User
+  @JsonManagedReference
+  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinTable(name = "users_tracks", joinColumns = { @JoinColumn(name = "track_id")},
+    inverseJoinColumns = { @JoinColumn(name = "user_id")})
+  private Set<User> users = new HashSet<>();
+
+  public Set<User> getUsers() {
+    return users;
+  }
+
+  public void setUsers(Set<User> users) {
+    this.users = users;
+  }
+
+  public Integer getId_track() {
     return id_track;
   }
 
-  public void setId_track(Long id_track) {
+  public void setId_track(Integer id_track) {
     this.id_track = id_track;
   }
 

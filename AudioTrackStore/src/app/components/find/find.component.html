@@ -3,7 +3,7 @@
 <div id="main">
 
   <app-article-find></app-article-find>
-  <app-nav-find></app-nav-find>
+  <app-nav-find (dataChanged) = 'dataChangeHandler($event)'></app-nav-find>
   <app-aside-m></app-aside-m>
 
 </div>

@@ -1,7 +1,7 @@
 package Application.Services.Impl;
 
-import Application.Models.Genre;
 import Application.Models.Track;
+import Application.Models.User;
 import Application.Repositores.TrackRepository;
 import Application.Services.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class TrackServiceImpl implements TrackService {
   }
 
   @Override
-  public Track findTrackByName(String name) {
-    return trackRepository.findTrackByName(name);
+  public Iterable<Track> findAllByName(String name) {
+    return trackRepository.findAllByName(name);
   }
 
   @Override

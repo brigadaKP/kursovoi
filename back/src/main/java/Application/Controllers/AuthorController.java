@@ -3,13 +3,11 @@ package Application.Controllers;
 import Application.Models.Author;
 import Application.Services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("tracks")
 public class AuthorController {
 
   @Autowired
@@ -21,4 +19,5 @@ public class AuthorController {
     System.out.println("/authors-list");
     return authorService.findAll();
   }
+
 }

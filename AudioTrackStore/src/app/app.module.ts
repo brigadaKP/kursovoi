@@ -36,6 +36,14 @@ import { UsersItemComponent } from './components/pages/page-for-menu-items/users
 import { AddTrackItemComponent } from './components/pages/page-for-menu-items/add-track-item/add-track-item.component';
 import { AddMusicianItemComponent } from './components/pages/page-for-menu-items/add-musician-item/add-musician-item.component';
 import { AddAlbumItemComponent } from './components/pages/page-for-menu-items/add-album-item/add-album-item.component';
+import { AuthService } from './services/user/auth.service';
+import { UserService } from './services/user/user-service.service';
+import { TrackService } from './services/track/track-service.service';
+import { AlbumService } from './services/album/album.service';
+import { GenreService } from './services/genre/genre.service';
+
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import { AuthInterceptionService } from './services/user/auth-interception.service';
 
 @NgModule({
   declarations: [
@@ -78,7 +86,17 @@ import { AddAlbumItemComponent } from './components/pages/page-for-menu-items/ad
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthInterceptionService,
+    AuthService,
+    UserService,
+    TrackService,
+    AlbumService,
+    GenreService,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptionService, multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

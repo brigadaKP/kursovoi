@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
+
+import { ArticleFindComponent } from './article-find/article-find.component';
 
 @Component({
   selector: 'app-find',
@@ -9,9 +11,15 @@ export class FindComponent implements OnInit {
 
   @Input() background: string;
 
+  @ViewChild(ArticleFindComponent) articleFindComponent: ArticleFindComponent;
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {  }
+
+  dataChangeHandler(message) {
+    console.log(message);
+    this.articleFindComponent.whoAmI(message); // 👶 I am a child!
   }
 
 }

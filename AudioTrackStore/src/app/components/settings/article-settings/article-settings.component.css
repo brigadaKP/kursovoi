@@ -127,7 +127,9 @@ button:active {
     margin-bottom: 1em;
     white-space: nowrap; /* Запрещаем перенос строк */
     overflow: hidden;
-	  text-overflow: ellipsis; 
+    text-overflow: ellipsis; 
+    
+    position: relative;
   }
 }
 

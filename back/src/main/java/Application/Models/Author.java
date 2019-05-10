@@ -42,7 +42,7 @@ public class Author {
   }
 
   //ManyToMany Track
-  @JsonManagedReference
+  @JsonBackReference
   @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinTable(name = "performers_tracks", joinColumns = { @JoinColumn(name = "author_id")},
                                           inverseJoinColumns = { @JoinColumn(name = "track_id")})

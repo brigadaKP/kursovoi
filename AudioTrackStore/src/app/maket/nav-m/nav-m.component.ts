@@ -13,7 +13,7 @@ export class NavMComponent implements OnInit {
 
   ngOnInit() {
 
-    this.typeUser="admin";
+    this.typeUser="user";
     // typeUser="user";
 
   }

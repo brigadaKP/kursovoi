@@ -1,15 +1,18 @@
 package Application.Controllers;
 
+import Application.DTO.TrackDTO.TrackDTO;
 import Application.Models.Genre;
+import Application.Models.Track;
 import Application.Services.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("genre")
 public class GenreController {
 
   @Autowired
@@ -22,5 +25,12 @@ public class GenreController {
     return genreService.findAll();
   }
 
+  @PostMapping(path = "/genres-list")
+  public @ResponseBody
+  String findTracksAndAlbumsByGenre(@RequestBody String string) {
+    System.out.println("/genres-list --- findTracksAndAlbumsByGenre: " + string);
+
+    return string;
+  }
 
 }

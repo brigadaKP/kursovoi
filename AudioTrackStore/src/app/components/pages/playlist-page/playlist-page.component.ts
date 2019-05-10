@@ -53,10 +53,10 @@ export class PlaylistPageComponent implements OnInit {
       id_album:'id_альбома 1',
       name: 'Help!',
       year: 1965,
-      number_of_tracks: 10,
+      number_of_tracks: 3,
       link: 'Help!',
-      time: 35.25,
-      price:'25'
+      time: 9.6,
+      price:'11'
     }
     
   }

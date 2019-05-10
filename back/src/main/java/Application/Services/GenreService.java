@@ -10,5 +10,4 @@ public interface GenreService {
   Optional<Genre> findById(int id);
   Genre save(Genre genre);
 
-  //Genre findGenreByTracks(int id);
 }

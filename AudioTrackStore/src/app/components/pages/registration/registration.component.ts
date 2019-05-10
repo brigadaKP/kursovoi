@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from '../../../services/user/auth.service';
+import { User } from '../../../classes/user';
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -7,34 +10,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  userName:string;
-  password:string;
-  passwordConfirm:string; 
-  email:string;
+  userName:String;
+  password:String;
+  passwordConfirm:String; 
+  email:String;
 
-  constructor() { }
+  user:User = new User();
+
+  constructor(private userService:AuthService) { }
+  
 
   ngOnInit() {
+
   }
 
-  signUp(userName, password, passwordConfirm, email) {
+  signUp(userName,email,password,passwordConfirm) {
     var fail:any = false;
-
-    console.log(email);
         
     var mail_pattern = /[0-9a-z_-]+@[0-9a-z_-]+\.[a-z]{2,5}/i;
     var login_pattern = /[0-9A-Za-z_-]/i;
     var password_pattern = /[0-9A-Za-z]/i;
         
-    if(userName == " ")
+    if( userName== " ")
       fail = "Вы не ввели свой логина";
     else if(login_pattern.test(userName) == false)
       fail = "Ошибка ввода логина";
-    else if(password == " ")
+    else if( password == " ")
       fail = "Вы не ввели свой пароль";
     else if(password_pattern.test(password) == false)
       fail = "Ошибка ввода пароля";
-    else if(passwordConfirm != password)
+    else if( passwordConfirm !=  password)
       fail = "Пароли не совпадают";
     else if(mail_pattern.test(email) == false)
       fail = "Вы ввели email неправильно";
@@ -44,13 +49,13 @@ export class RegistrationComponent implements OnInit {
       return false;
     }
     else {
-  //		newUser.login = login;
-  //		newUser.email = email;
-  //		newUser.password = password;
-      alert("OK");
-      window.open("/login","_self");
-      return false;
-      /*localStorage.setItem(obj.surname, JSON.stringify(obj));*/
+  		this.user.login = userName;
+  		this.user.email = email;
+      this.user.password = password;
+
+      alert("Регистрация прошла успешна");
+      
+      this.userService.signUp(this.user);
       };
     }
 
